@@ -55,3 +55,10 @@ where departments.name = 'Dipartimento di Matematica';
 
 7. BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per
 superare ciascuno dei suoi esami
+
+select s.name, s.surname, count(e.course_id) as numero_esami
+from exams e
+inner join exam_student es on es.exam_id = e.id 
+inner join students s on s.id = es.student_id 
+where es.vote < '18'
+group by s.id;
